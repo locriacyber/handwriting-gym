@@ -16,7 +16,7 @@ pub fn build(b: *std.build.Builder) void {
 
     const raylib_use_system = b.option(bool, "system-raylib", "link to preinstalled raylib libraries") orelse false;
 
-    const exe = b.addExecutable("handwriting-gym", "src/main.zig");
+    const exe = b.addExecutable("collect-data", "src/collect-data.zig");
     exe.setTarget(target);
     exe.setBuildMode(mode);
     exe.install();
@@ -32,13 +32,13 @@ pub fn build(b: *std.build.Builder) void {
         run_cmd.addArgs(args);
     }
 
-    const run_step = b.step("run", "Run the app");
+    const run_step = b.step("collect", "Collect Data");
     run_step.dependOn(&run_cmd.step);
 
-    const exe_tests = b.addTest("src/main.zig");
-    exe_tests.setTarget(target);
-    exe_tests.setBuildMode(mode);
+    // const exe_tests = b.addTest("src/main.zig");
+    // exe_tests.setTarget(target);
+    // exe_tests.setBuildMode(mode);
 
-    const test_step = b.step("test", "Run unit tests");
-    test_step.dependOn(&exe_tests.step);
+    // const test_step = b.step("test", "Run unit tests");
+    // test_step.dependOn(&exe_tests.step);
 }
