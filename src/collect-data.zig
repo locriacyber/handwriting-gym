@@ -38,6 +38,7 @@ const Challenge = struct {
     pub fn answer(this: Self, data: []const PointInTime) !void {
         const writer = this.file.writer();
         try writer.writeAll("---\n");
+        try std.fmt.format(writer, "dimension_limit: [{}, {}]\n", .{screenWidth, screenHeight});
         try writer.writeAll("challenge:\n");
 
         try writer.writeAll("- ");

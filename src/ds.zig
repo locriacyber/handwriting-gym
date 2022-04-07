@@ -2,7 +2,7 @@ const std = @import("std");
 
 pub fn FixedSizedQueue (comptime T: type, comptime max: usize) type {
     return struct {
-        buffer: [20]T,
+        buffer: [max]T,
         len: usize,
 
         const Self = @This();
